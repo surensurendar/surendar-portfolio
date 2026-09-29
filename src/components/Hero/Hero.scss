@@ -1,0 +1,477 @@
+@use '../../styles/variables.scss' as *;
+
+.hero-section {
+  padding-top: 8rem;
+  padding-bottom: 5rem;
+  min-height: 92vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3.5rem;
+    align-items: center;
+
+    @media (min-width: 1024px) {
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 4.5rem;
+    }
+  }
+
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    z-index: 2;
+
+    .status-pill-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.65rem;
+      padding: 0.45rem 1.15rem;
+      border-radius: var(--radius-full);
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      color: var(--accent-emerald);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 0 25px rgba(16, 185, 129, 0.15);
+
+      .pulse-beacon {
+        position: relative;
+        width: 8px;
+        height: 8px;
+
+        .beacon-core {
+          width: 8px;
+          height: 8px;
+          border-radius: 50%;
+          background: var(--accent-emerald);
+        }
+
+        .beacon-wave {
+          position: absolute;
+          inset: -4px;
+          border-radius: 50%;
+          background: rgba(16, 185, 129, 0.4);
+          animation: pulseGlow 2s infinite ease-out;
+        }
+      }
+    }
+
+    .hero-greeting {
+      font-size: 1.25rem;
+      color: var(--text-secondary);
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+      letter-spacing: -0.01em;
+    }
+
+    .hero-name {
+      font-size: 3.4rem;
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      line-height: 1.05;
+      margin-bottom: 1rem;
+
+      @media (min-width: 768px) {
+        font-size: 4.6rem;
+      }
+
+      .gradient-name {
+        background: var(--gradient-brand);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        display: inline-block;
+      }
+    }
+
+    .hero-title-strip {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.6rem;
+      margin-bottom: 1.5rem;
+
+      .title-tag {
+        font-size: 1.15rem;
+        font-weight: 700;
+        color: var(--accent-cyan);
+      }
+
+      .dot-sep {
+        color: var(--text-muted);
+        opacity: 0.4;
+      }
+
+      .title-sub {
+        font-size: 1.15rem;
+        font-weight: 600;
+        color: var(--text-primary);
+      }
+    }
+
+    .hero-bio {
+      font-size: 1.12rem;
+      color: var(--text-secondary);
+      line-height: 1.75;
+      max-width: 620px;
+      margin-bottom: 2.25rem;
+
+      strong {
+        color: var(--text-primary);
+        font-weight: 700;
+      }
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.1rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .social-dock {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      padding-top: 0.75rem;
+
+      .dock-label {
+        font-size: 0.82rem;
+        color: var(--text-muted);
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+
+      .social-icon-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.5rem 0.9rem;
+        border-radius: var(--radius-full);
+        background: var(--bg-card);
+        border: 1px solid var(--border-glass);
+        color: var(--text-secondary);
+        text-decoration: none;
+        font-size: 0.88rem;
+        font-weight: 600;
+        transition: all var(--transition-fast);
+
+        &:hover {
+          background: var(--bg-tertiary);
+          border-color: var(--accent-primary);
+          color: var(--accent-primary);
+          transform: translateY(-2px);
+          box-shadow: 0 4px 14px rgba(99, 102, 241, 0.2);
+        }
+      }
+    }
+  }
+
+  /* Right Visual: Masterpiece 3D Card with Photo & Interactive Code Toggle */
+  .hero-visual {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+
+    .visual-stage {
+      position: relative;
+      width: 100%;
+      max-width: 420px;
+
+      .aurora-glow-backdrop {
+        position: absolute;
+        inset: -20px;
+        background: radial-gradient(circle at 50% 40%, rgba(99, 102, 241, 0.45) 0%, rgba(6, 182, 212, 0.3) 50%, transparent 75%);
+        filter: blur(35px);
+        border-radius: 40px;
+        z-index: 0;
+        animation: pulseGlow 5s infinite ease-in-out;
+      }
+
+      .master-card {
+        position: relative;
+        z-index: 1;
+        background: var(--bg-card);
+        backdrop-filter: blur(24px);
+        -webkit-backdrop-filter: blur(24px);
+        border: 1px solid var(--border-glass-bright);
+        border-radius: 28px;
+        padding: 1.25rem;
+        box-shadow: var(--shadow-lg);
+        transition: transform var(--transition-smooth);
+
+        .card-top-bar {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding-bottom: 0.85rem;
+          margin-bottom: 0.85rem;
+          border-bottom: 1px solid var(--border-glass);
+
+          .view-toggle-pills {
+            display: flex;
+            background: var(--bg-tertiary);
+            padding: 3px;
+            border-radius: var(--radius-full);
+            border: 1px solid var(--border-glass);
+
+            .toggle-btn {
+              border: none;
+              background: transparent;
+              color: var(--text-muted);
+              padding: 0.35rem 0.85rem;
+              border-radius: var(--radius-full);
+              font-size: 0.78rem;
+              font-weight: 700;
+              cursor: pointer;
+              transition: all var(--transition-fast);
+
+              &.active {
+                background: var(--accent-primary);
+                color: #ffffff;
+                box-shadow: 0 2px 8px rgba(99, 102, 241, 0.4);
+              }
+            }
+          }
+
+          .tech-signal {
+            font-size: 0.75rem;
+            color: var(--accent-cyan);
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
+          }
+        }
+
+        /* Portrait View */
+        .portrait-wrapper {
+          position: relative;
+          border-radius: 20px;
+          overflow: hidden;
+          background: #000000;
+
+          .main-photo {
+            width: 100%;
+            height: 380px;
+            object-fit: cover;
+            object-position: center top;
+            display: block;
+            filter: contrast(1.05) brightness(1.02);
+            transition: transform var(--transition-smooth);
+
+            &:hover {
+              transform: scale(1.04);
+            }
+          }
+
+          .photo-glass-overlay {
+            position: absolute;
+            bottom: 14px;
+            left: 14px;
+            right: 14px;
+            background: var(--bg-glass-heavy);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--border-glass-bright);
+            border-radius: var(--radius-md);
+            padding: 0.85rem 1.15rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            .dev-name {
+              font-size: 1.05rem;
+              font-weight: 800;
+              color: var(--text-primary);
+              letter-spacing: -0.01em;
+            }
+
+            .dev-role {
+              font-size: 0.78rem;
+              color: var(--accent-cyan);
+              font-weight: 600;
+            }
+
+            .experience-pill {
+              background: var(--gradient-brand);
+              color: #ffffff;
+              padding: 0.25rem 0.65rem;
+              border-radius: var(--radius-full);
+              font-size: 0.75rem;
+              font-weight: 800;
+            }
+          }
+        }
+
+        /* Live Code View */
+        .code-view-wrapper {
+          min-height: 380px;
+          background: var(--bg-card-solid);
+          border: 1px solid var(--border-glass);
+          border-radius: 20px;
+          padding: 1.5rem;
+          font-family: 'JetBrains Mono', monospace;
+          font-size: 0.86rem;
+          line-height: 1.7;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+
+          .code-line {
+            display: block;
+            white-space: pre;
+
+            .kw { color: #f43f5e; }
+            .var { color: #38bdf8; }
+            .prop { color: #818cf8; }
+            .str { color: #34d399; }
+            .num { color: #fbbf24; }
+            .bool { color: #c084fc; }
+            .comment { color: #64748b; font-style: italic; }
+          }
+        }
+
+        /* Floating Holographic Pill Badges */
+        .hologram-pill-top {
+          position: absolute;
+          top: -18px;
+          left: -14px;
+          background: var(--bg-secondary);
+          border: 1px solid rgba(99, 102, 241, 0.5);
+          box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+          padding: 0.55rem 1rem;
+          border-radius: var(--radius-full);
+          font-size: 0.82rem;
+          font-weight: 700;
+          color: var(--text-primary);
+          display: flex;
+          align-items: center;
+          gap: 0.45rem;
+          animation: float 4s ease-in-out infinite;
+          z-index: 4;
+        }
+
+        .hologram-pill-bottom {
+          position: absolute;
+          bottom: -22px;
+          right: -16px;
+          background: var(--bg-secondary);
+          border: 1px solid rgba(6, 182, 212, 0.5);
+          box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
+          padding: 0.75rem 1.15rem;
+          border-radius: var(--radius-md);
+          display: flex;
+          align-items: center;
+          gap: 0.75rem;
+          animation: float 5s ease-in-out infinite reverse;
+          z-index: 4;
+
+          .badge-icon-box {
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
+            background: var(--gradient-cyan);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            font-size: 1.15rem;
+          }
+
+          .badge-text-box {
+            display: flex;
+            flex-direction: column;
+
+            .badge-sub {
+              font-size: 0.68rem;
+              text-transform: uppercase;
+              color: var(--text-muted);
+              font-weight: 800;
+              letter-spacing: 0.05em;
+            }
+
+            .badge-main {
+              font-size: 0.9rem;
+              font-weight: 800;
+              color: var(--accent-cyan);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  /* Stats Row */
+  .stats-strip {
+    margin-top: 5rem;
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+
+    @media (min-width: 768px) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .stat-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-glass);
+      border-radius: var(--radius-md);
+      padding: 1.5rem 1.75rem;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      transition: all var(--transition-normal);
+      position: relative;
+      overflow: hidden;
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 3px;
+        height: 100%;
+        background: var(--gradient-brand);
+        opacity: 0;
+        transition: opacity var(--transition-fast);
+      }
+
+      &:hover {
+        border-color: var(--border-glass-hover);
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-md);
+
+        &::before {
+          opacity: 1;
+        }
+      }
+
+      .stat-number {
+        font-size: 2.4rem;
+        font-weight: 900;
+        line-height: 1;
+        margin-bottom: 0.4rem;
+        background: var(--gradient-brand);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .stat-desc {
+        font-size: 0.88rem;
+        color: var(--text-secondary);
+        font-weight: 600;
+      }
+    }
+  }
+}

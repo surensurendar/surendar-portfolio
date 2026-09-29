@@ -1,0 +1,191 @@
+@use '../../styles/variables.scss' as *;
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  animation: fadeIn 0.2s ease-out;
+
+  .modal-dialog {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-glass);
+    border-radius: var(--radius-lg);
+    width: 100%;
+    max-width: 800px;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: var(--shadow-lg);
+    position: relative;
+    animation: scaleUp 0.25s ease-out;
+
+    .modal-header {
+      padding: 1.5rem 2rem;
+      border-bottom: 1px solid var(--border-glass);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      position: sticky;
+      top: 0;
+      background: var(--bg-secondary);
+      z-index: 10;
+
+      .modal-title-group {
+        .modal-badge {
+          display: inline-block;
+          font-size: 0.75rem;
+          font-weight: 700;
+          color: var(--accent-secondary);
+          text-transform: uppercase;
+          letter-spacing: 0.05em;
+          margin-bottom: 0.35rem;
+        }
+
+        h2 {
+          font-size: 1.6rem;
+          font-weight: 800;
+          color: var(--text-primary);
+        }
+
+        .modal-sub {
+          font-size: 0.95rem;
+          color: var(--text-secondary);
+        }
+      }
+
+      .btn-close {
+        background: var(--bg-card);
+        border: 1px solid var(--border-glass);
+        color: var(--text-muted);
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all var(--transition-fast);
+
+        &:hover {
+          color: var(--text-primary);
+          border-color: var(--border-glass-hover);
+          background: var(--bg-tertiary);
+        }
+      }
+    }
+
+    .modal-body {
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+
+      .section-heading {
+        font-size: 1.05rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        margin-bottom: 0.75rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .overview-text {
+        font-size: 0.98rem;
+        color: var(--text-secondary);
+        line-height: 1.7;
+      }
+
+      .features-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+
+        .feat-item {
+          background: var(--bg-tertiary);
+          border: 1px solid var(--border-glass);
+          padding: 0.85rem 1rem;
+          border-radius: var(--radius-md);
+          font-size: 0.9rem;
+          color: var(--text-secondary);
+          display: flex;
+          align-items: flex-start;
+          gap: 0.65rem;
+
+          .check-icon {
+            color: var(--accent-success);
+            flex-shrink: 0;
+            margin-top: 0.15rem;
+          }
+        }
+      }
+
+      .metrics-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+
+        @media (min-width: 600px) {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .metric-card {
+          background: rgba(99, 102, 241, 0.08);
+          border: 1px solid rgba(99, 102, 241, 0.2);
+          border-radius: var(--radius-md);
+          padding: 1rem;
+          font-size: 0.88rem;
+          color: var(--text-primary);
+          display: flex;
+          align-items: center;
+          gap: 0.6rem;
+
+          .metric-icon {
+            color: var(--accent-primary);
+          }
+        }
+      }
+
+      .tech-badges-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+
+        .pill {
+          background: var(--bg-tertiary);
+          border: 1px solid var(--border-glass);
+          color: var(--accent-secondary);
+          padding: 0.35rem 0.85rem;
+          border-radius: var(--radius-sm);
+          font-size: 0.85rem;
+          font-weight: 600;
+        }
+      }
+    }
+
+    .modal-footer {
+      padding: 1.25rem 2rem;
+      border-top: 1px solid var(--border-glass);
+      display: flex;
+      justify-content: flex-end;
+      gap: 1rem;
+      background: var(--bg-tertiary);
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleUp {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
