@@ -2,24 +2,35 @@
 
 .about-section {
   position: relative;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
 
   .about-grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 3rem;
+    gap: 2rem;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
 
     @media (min-width: 900px) {
       grid-template-columns: 1.1fr 0.9fr;
       align-items: center;
+      gap: 3rem;
     }
   }
 
   .about-main {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+
     .highlight-lead {
-      font-size: 1.25rem;
+      font-size: clamp(1.05rem, 3.5vw, 1.25rem);
       font-weight: 700;
       color: var(--text-primary);
-      margin-bottom: 1.25rem;
+      margin-bottom: 1.15rem;
       line-height: 1.5;
 
       .highlight-accent {
